@@ -104,7 +104,7 @@ public class WorkerImpl implements Worker, Runnable {
 
     @Override
     public void awaitClosed() throws InterruptedException {
-        if (!isClosed() && isOpClose()) {
+        if (!isClosed() && !isOpClose()) {
             throw new IllegalStateException("must close first");
         }
         synchronized (this.opLock) {
